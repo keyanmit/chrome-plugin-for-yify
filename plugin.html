@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Yify movie torent</title>
+    <!--style>
+      body {
+        min-width: 357px;
+        overflow-x: hidden;
+      }
+
+      img {
+        margin: 5px;
+        border: 2px solid black;
+        vertical-align: middle;
+        width: 75px;
+        height: 75px;
+      }
+    </style-->
+ 	<style type="text/css">
+ 		div{
+	border: 1px solid black;
+}
+
+body {
+	min-height: 100px;	
+}
+
+.TorrentContainer{
+	/*position: absolute;	*/
+	max-width: 90%;	
+}
+
+.MovieBanner{
+	margin: 0.15em 0.1em;		
+	height: 50px;
+}
+
+.DescWrapper{	
+	border: 1px solid black;
+	height: 50px;
+}
+
+.Title{
+	font-size: 20px;
+	line-height: 25px;
+	max-height: 25px;
+}
+
+.TorrentCount{
+	font-size: 18px;
+	line-height: 20px;
+	max-height: 22px;
+}
+
+/*.RatingStar{
+	width: 50px;
+	height: 50px;
+	background-image: url("star_full_48px.png") no-repeat;
+}*/
+
+.FloatLeft{
+	float: left;
+}
+
+.TorrentList{
+	margin: 0.15em 0.1em;
+
+}
+ 	</style>
+    
+
+    <script type="text/javascript" src="public/jqmin.js"></script>
+    <!--script type="text/javascript" scr="https://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script-->    
+    <script type="text/javascript" src="public/jqtmpl.js"></script>
+    <script src="plugin.js"></script> 
+    <script src="yiffyHelper.js"></script> 
+  </head>
+  <body>
+  	Find available yify torrents for 
+
+  	<div>
+
+  	</div>
+  	<input type="text" placeholder="enter imdb id" id="key">
+  	<button id="click">show</button>
+
+<div class="TorrentContainer">
+	
+	
+</div>
+
+  	
+  </body>
+</html>
+
+
