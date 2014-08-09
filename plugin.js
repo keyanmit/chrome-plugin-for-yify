@@ -54,8 +54,34 @@ function show(){
   });
 }
 
+window.UI = new function(){
+  var self = this;
+  self.loadFromDb = function(){
+  $('.TorrentContainer').html("");//clear the exising torrents
+  var movIds = window.localStorage.getItem("movIds");
+    if(movIds){
+      movIds = JSON.parse(movIds); 
+      movIds.forEach(function(mov,idx){
+        window.yify.getMovieDetailByImdbId(mov, function(name, count, movies){
+          if(count == 0 || name== undefined || movies === undefined){
+            //show no result found. exit
+            return;
+          }
+          $.tmpl(window.template.TorrentBanner,{
+            MovieTitle : name,
+            TorrentCount : count
+          }).appendTo('.TorrentContainer'); 
+
+          $.tmpl(window.template.TorrentList,movies)
+          .appendTo('.TorrentContainer');
+        }); 
+      });
+    }
+  } 
+};
 
 $(document).ready(function(){
 
     $('#click').on("click",show);
+    window.UI.loadFromDb();
 });
