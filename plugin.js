@@ -70,7 +70,7 @@ window.UI = new function(){
           }).appendTo('.TorrentContainer');
 
           $.tmpl(window.template.TorrentTmpl,movies)
-            .appendTo($('.TorrentContainer .Torrent')[idx]);     
+            .appendTo($('.TorrentContainer .Torrent').last());     
         }); 
       });
     }
