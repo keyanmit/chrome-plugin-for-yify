@@ -1,0 +1,101 @@
+/* 		div{
+	border: 1px solid black;
+}
+
+body {
+	min-height: 100px;	
+}
+
+.TorrentContainer{
+	//position: absolute;	
+	max-width: 90%;	
+}
+
+.MovieBanner{
+	margin: 0.15em 0.1em;		
+	height: 50px;
+}
+
+.DescWrapper{	
+	border: 1px solid black;
+	height: 50px;
+}
+
+.Title{
+	font-size: 20px;
+	line-height: 25px;
+	max-height: 25px;
+}
+
+.TorrentCount{
+	font-size: 18px;
+	line-height: 20px;
+	max-height: 22px;
+}
+
+//.RatingStar{
+	width: 50px;
+	height: 50px;
+	background-image: url("star_full_48px.png") no-repeat;
+}//
+
+.FloatLeft{
+	float: left;
+}
+
+.TorrentList{
+	margin: 0.15em 0.1em;
+
+}
+
+*/
+
+body {
+    min-height: 100px;
+    width: 250px
+}
+.TorrentContainer {
+    /*position: absolute;	*/
+    max-width: 90%;
+}
+.TorrentContainer .movie {
+    box-shadow : 0 0 2px 2px #999999;
+    border-bottom : 1px solid #828282;
+}
+.DescWrapper {
+    border-bottom : 1px #E6E6E6 solid;
+}
+.MovieBanner {
+    margin: 0.15em 0.1em;
+}
+.TorrentMetaData {
+    display : none;
+}
+.Torrent {
+    padding-bottom: 2px;
+}
+.Quality {
+    margin : 2px;
+    background-color : #666699;
+    padding : 2px;
+    box-shadow : 0 0 1px gray;
+    border-radius: 3px;
+    color : white;
+}
+.Title {
+    font-size: 20px;
+    line-height: 25px;
+    color : #256EB8
+}
+.RatingStar {
+    background: url("http://s29.postimg.org/j2bq4kp4z/1407619972_Natsu_Fav_sema_Small.png") no-repeat;
+    padding-left : 20px;
+}
+.FloatLeft {
+    float: left;
+}
+.Torrent span {
+}
+.TorrentList {
+    margin: 0.35em 0.1em;
+}
