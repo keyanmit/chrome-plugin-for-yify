@@ -31,25 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //end
 
-
-
-function show(){
-  window.yify.getMovieDetailByImdbId($('#key').get(0).value, function(name, count, movies){
-
-      if(count == 0 || name== undefined || movies === undefined){
-        //show no result found. exit
-        return;
-      }
-
-      $('.TorrentContainer').html("");//clear the exising torrents
-      
-      window.UI.renderTorrentLink({
-            MovieTitle : name,
-            MovieRating : count        
-          },movies);            
-  });
-}
-
 window.UI = new function(){
   var self = this;
   self.loadFromDb = function(){
@@ -84,8 +65,6 @@ window.UI = new function(){
   }; 
 };
 
-$(document).ready(function(){
-
-    $('#click').on("click",show);
+$(document).ready(function(){    
     window.UI.loadFromDb();
 });
