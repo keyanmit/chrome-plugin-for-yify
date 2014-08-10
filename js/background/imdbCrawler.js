@@ -1,11 +1,3 @@
-alert("imdbCrawler loading");
-
-var fucker = new function(){
-	this.fucked = function(){
-		alert("working");
-	}
-};
-
 var cmdList = {
 	movieList : 0
 };

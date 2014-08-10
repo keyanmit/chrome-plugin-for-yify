@@ -4,21 +4,40 @@
     <title>Yify movie torent</title>    
  	  
 
-    <script type="text/javascript" src="public/jqmin.js"></script>    
+    <!--script type="text/javascript" src="public/jqmin.js"></script-->        
+    <script type="text/javascript" src="public/jquery-ui2/external/jquery/jquery.js"></script>
+    <script type="text/javascript" src="public/jquery-ui2/jquery-ui.min.js"></script>    
     <script type="text/javascript" src="public/jqtmpl.js"></script>
     <script src="plugin.js"></script> 
     <script src="yiffyHelper.js"></script> 
     <link rel="stylesheet" type="text/css" href="css/plugin.css">
+    <link rel="stylesheet" type="text/css" href="public/jquery-ui2/jquery-ui.min.css">
   </head>
   <body>
-  	YIFY torrents available for movie(s) in the page   	
 
-<div class="TorrentContainer">
+    <div class="tour">
+      <div class="step1">
+      Search movies at <a href="www.imdb.com/">Imdb.</a> We will pull out torrents from YIFY for you!.      
+      </div>
+      <div class="step2">
+      Loading Imdb in a new tab for you in a bit! Pleae click on the YIFY extension to see the torrents.
+      </div>
+    </div>
+
+<div class="imdbContext">
+  	<div class="loader">
+    Loading YIFY torrents for movie(s) in the page!      
+    <div><img src="http://s3.postimg.org/3zgd6r74j/preloader.gif"/></div>
+    </div>
+
+    <div class="TorrentContainer">
 	
 	
-</div>
-
-  	
+    </div>
+  <div class="credits">
+    powered by <a href="https://yts.re/">YIFY</a>
+  </div>
+  </div>
   </body>
 </html>
 

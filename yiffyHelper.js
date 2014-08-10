@@ -1,7 +1,5 @@
 
 
-//fuck u bitch
-
 window.yify = new function(){
 	var self = this;
 	var EndPoints = {

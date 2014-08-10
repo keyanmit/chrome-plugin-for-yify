@@ -21,6 +21,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       window.localStorage.setItem("movIds",JSON.stringify(request.data));
       sendResponse({message : "recieved cmd"});
   	}else{
-  		sendResponse({message: "got ur fucking msg. fuck off"});
+  		sendResponse({message: "error"});
   	}
 });
