@@ -52,6 +52,12 @@ window.UI = new function(){
       });
     }
     window.clearLoader = callBack;
+    window.setTimeout(function(){
+      if($('.loader').is(":visible")){
+        window.clearLoader();
+        $('.TorrentContainer').append("sorry we couldnt find torrent for titles in current page. :/");
+      }
+    },5000);
   }
 
   self.renderTorrentLink = function(MovieTmplObj, TorrentTmplObj){
