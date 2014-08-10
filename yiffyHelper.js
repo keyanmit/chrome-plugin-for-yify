@@ -17,7 +17,7 @@ window.yify = new function(){
 				var count = 0;
 				if(movieList && movieList.MovieList && movieList.MovieList.length){
 					movieName = movieList.MovieList[0].MovieTitleClean;
-					count = movieList.MovieCount;
+					count = movieList.MovieList[0].MovieRating;
 				}
 				callBack(movieName, count, movieList.MovieList);			
 			});

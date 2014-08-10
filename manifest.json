@@ -6,6 +6,7 @@
   "version": "1.0",
 
   "permissions": [
+    "downloads",
     "http://www.imdb.com/"
   ],
   "browser_action": {

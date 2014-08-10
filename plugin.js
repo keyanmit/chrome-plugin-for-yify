@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', function () {
                                 + '</div>'
                                 + '<div class="TorrentList">'
                                   + '<div class="Torrent">'
-                                    + '<span class="RatingStar">4.8</span>'
+                                    + '<span class="RatingStar">${MovieRating}</span>'
                                   + '</div>'
                                 + '</div>'
                               + '</div>'
                           + '</div>';
 
-      var torentListTmplHtml = '<span class="Quality" title="Seed/Peers : ${TorrentSeeds} / $(TorrentPeers) Size : ${Size}" >${Quality}</span>';
+      var torentListTmplHtml = '<span class="Quality" title="Seed/Peers : ${TorrentSeeds} / $(TorrentPeers) Size : ${Size}" data-url="${TorrentUrl}">${Quality}</span>';
 
       this.MovieTmpl = $.template("compiledMovieTemplate",movieTplHtml);
       this.TorrentTmpl = $.template("compiledTorrentTmpl",torentListTmplHtml);
@@ -43,12 +43,10 @@ function show(){
 
       $('.TorrentContainer').html("");//clear the exising torrents
       
-      $.tmpl(window.template.MovieTmpl,{
-        MovieTitle : name        
-      }).appendTo('.TorrentContainer');
-
-      $.tmpl(window.template.TorrentTmpl,movies)
-        .appendTo('.TorrentContainer .Torrent');                
+      window.UI.renderTorrentLink({
+            MovieTitle : name,
+            MovieRating : count        
+          },movies);            
   });
 }
 
@@ -65,16 +63,25 @@ window.UI = new function(){
             //show no result found. exit
             return;
           }
-          $.tmpl(window.template.MovieTmpl,{
-            MovieTitle : name        
-          }).appendTo('.TorrentContainer');
-
-          $.tmpl(window.template.TorrentTmpl,movies)
-            .appendTo($('.TorrentContainer .Torrent').last());     
+          window.UI.renderTorrentLink({
+            MovieTitle : name,
+            MovieRating : count        
+          },movies);            
         }); 
       });
     }
-  } 
+  }
+
+  self.renderTorrentLink = function(MovieTmplObj, TorrentTmplObj){
+      $.tmpl(window.template.MovieTmpl,MovieTmplObj).appendTo('.TorrentContainer');
+
+      $.tmpl(window.template.TorrentTmpl,TorrentTmplObj)
+      .appendTo($('.TorrentContainer .Torrent').last());
+
+      $('.TorrentContainer .Torrent .Quality').last().on("click",function(){
+          chrome.downloads.download({url : $(this).data("url")});          
+      });     
+  }; 
 };
 
 $(document).ready(function(){
