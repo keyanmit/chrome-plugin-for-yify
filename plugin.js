@@ -34,30 +34,47 @@ document.addEventListener('DOMContentLoaded', function () {
 window.UI = new function(){
   var self = this;
   self.loadFromDb = function(callBack){
+
+  window.mvCount = 0;
+
   $('.TorrentContainer').html("");//clear the exising torrents
   var movIds = window.localStorage.getItem("movIds");
     if(movIds){
       movIds = JSON.parse(movIds); 
+      
+      window.mvCount = movIds.length;
+
       movIds.forEach(function(mov,idx){
         window.yify.getMovieDetailByImdbId(mov, function(name, count, movies){
-          if(count == 0 || name== undefined || movies === undefined){
-            //show no result found. exit
-            return;
+          
+          window.mvCount = window.mvCount - 1;          
+          if(!(count == 0 || name== undefined || movies === undefined)){
+            //show                              
+            window.UI.renderTorrentLink({
+              MovieTitle : name,
+              MovieRating : count        
+            },movies);
+          }            
+          if(window.mvCount == 0){
+            $('.TorrentContainer .Torrent .Quality').on("click",function(){
+              chrome.downloads.download({url : $(this).data("url")});                  
+            });
+
+            if($('.Quality').is(":visible")==false){
+              window.clearLoader();
+              $('.TorrentContainer').append("sorry we couldnt find torrent for titles in current page. :/");      
+            }
           }
-          window.UI.renderTorrentLink({
-            MovieTitle : name,
-            MovieRating : count        
-          },movies);            
         }); 
       });
     }
     window.clearLoader = callBack;
-    window.setTimeout(function(){
+    /*window.setTimeout(function(){
       if($('.loader').is(":visible")){
         window.clearLoader();
         $('.TorrentContainer').append("sorry we couldnt find torrent for titles in current page. :/");
       }
-    },5000);
+    },5000);*/
   }
 
   self.renderTorrentLink = function(MovieTmplObj, TorrentTmplObj){
@@ -65,10 +82,7 @@ window.UI = new function(){
 
       $.tmpl(window.template.TorrentTmpl,TorrentTmplObj)
       .appendTo($('.TorrentContainer .Torrent').last());
-
-      $('.TorrentContainer .Torrent .Quality').last().on("click",function(){
-          chrome.downloads.download({url : $(this).data("url")});          
-      });     
+        
 
       window.clearLoader();
   }; 
