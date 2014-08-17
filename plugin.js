@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
                               + '</div>'
                           + '</div>';
 
-      var torentListTmplHtml = '<span class="Quality" title="Seed/Peers : ${TorrentSeeds} / ${TorrentPeers} Size : ${Size}" data-url="${TorrentUrl}">${Quality}</span>';
+      var torentListTmplHtml = '<span class="Quality Quality-InComplete" title="Seed/Peers : ${TorrentSeeds} / ${TorrentPeers} Size : ${Size}" data-url="${TorrentUrl}">${Quality}</span>';
 
       this.MovieTmpl = $.template("compiledMovieTemplate",movieTplHtml);
       this.TorrentTmpl = $.template("compiledTorrentTmpl",torentListTmplHtml);
@@ -56,9 +56,10 @@ window.UI = new function(){
             },movies);
           }            
           if(window.mvCount == 0){
-            $('.TorrentContainer .Torrent .Quality').on("click",function(){
-              chrome.downloads.download({url : $(this).data("url")});                  
-            });
+            $('.TorrentContainer .Torrent .Quality').on("click",function(){              
+              chrome.downloads.download({url : $(this).data("url")});                    
+            }).removeClass("Quality-InComplete")
+            .addClass("Quality-Complete");            
 
             if($('.Quality').is(":visible")==false){
               window.clearLoader();
