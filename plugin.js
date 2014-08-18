@@ -46,15 +46,16 @@ window.UI = new function(){
 
       movIds.forEach(function(mov,idx){
         window.yify.getMovieDetailByImdbId(mov, function(name, count, movies){
-          
-          window.mvCount = window.mvCount - 1;          
+                    
           if(!(count == 0 || name== undefined || movies === undefined)){
             //show                              
             window.UI.renderTorrentLink({
               MovieTitle : name,
               MovieRating : count        
             },movies);
-          }            
+          }                      
+        }, function(){
+          window.mvCount = window.mvCount - 1;
           if(window.mvCount == 0){
             $('.TorrentContainer .Torrent .Quality').on("click",function(){              
               chrome.downloads.download({url : $(this).data("url")});                    
